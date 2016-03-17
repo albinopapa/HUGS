@@ -2,7 +2,9 @@
 #include "ChiliWindows.h"
 // need to specify DXSDK over WinSDK (do not want to target win8)
 // added $(DXSDK_DIR)\include
-#include "C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xaudio2.h"
+//#include "C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xaudio2.h"
+#pragma comment(lib, "Xaudio2.lib")
+#include <xaudio2.h>
 #include <memory>
 #include <stdexcept>
 #include <fstream>

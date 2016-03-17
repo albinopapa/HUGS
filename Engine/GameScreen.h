@@ -46,8 +46,8 @@ public:
 		lapDisplay( ship,{ 860.0f,15.0f } ),
 		input( input ),
 		gfx( gfx ),
-		kbdCtrl( ship,input.kbd ),
-		padCtrl( ship,input.di.GetPad() )
+		kbdCtrl( ship,input.kbd )/*,
+		padCtrl( ship,input.di.GetPad() )*/
 	{
 		ship.AddObserver( deathListener );
 	}
@@ -97,7 +97,8 @@ public:
 		}
 		else
 		{
-			padCtrl.Process();
+			
+			//padCtrl.Process();
 			kbdCtrl.Process();
 		}
 	}
@@ -113,5 +114,5 @@ private:
 	Font arialFont;
 	LapDisplay lapDisplay;
 	ShipControllerKeyboard kbdCtrl;
-	ShipControllerGamepad padCtrl;
+	//ShipControllerGamepad padCtrl;
 };

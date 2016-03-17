@@ -62,6 +62,38 @@ public:
 			index( -1 ),
 			pressed( false )
 		{}
+		Event(const Event &E)
+			:
+			pos(E.pos),
+			type(E.type),
+			index(E.index)
+		{}
+		Event(Event &&E)
+			:
+			pos(E.pos),
+			type(E.type),
+			index(E.index)
+		{
+			memset(&E, 0, sizeof(Event));
+		}
+
+		Event &operator=(const Event &E)
+		{
+			type = E.type;
+			pos = E.pos;
+			index = E.index;
+			return (*this);
+		}
+		Event &operator=(Event &&E)
+		{
+			type = E.type;
+			pos = E.pos;
+			index = E.index;
+
+			memset(&E, 0, sizeof(Event));
+			return (*this);
+		}
+
 		float GetAxisVal() const
 		{
 			assert( type == Axis );

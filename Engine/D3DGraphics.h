@@ -148,5 +148,6 @@ private:
 	IDirect3DDevice9*	pDevice;
 	IDirect3DSurface9*	pBackBuffer;
 	TextSurface			sysBuffer;
-	BloomProcessor		processor;
+	//BloomProcessor		processor;
+	BloomSSE			processor;
 };
