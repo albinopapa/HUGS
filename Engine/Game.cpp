@@ -26,7 +26,7 @@ Game::Game( HWND hWnd,KeyboardServer& kServer,MouseServer& mServer )
 	gfx( hWnd ),
 	input( hWnd,mServer,kServer )
 {
-	pScreen = std::make_unique<TitleScreen>( gfx,input,this );
+	pScreen = std::make_unique<GameScreen>( gfx,input,this );
 }
 
 Game::~Game()
@@ -65,7 +65,25 @@ void Game::UpdateModel( float dt )
 
 void Game::ComposeFrame()
 {
-	pScreen->DrawPreBloom( gfx );
+	auto p = Vec2( input.mouse.GetMouseX(),input.mouse.GetMouseY() );
+	//pScreen->DrawPreBloom( gfx );
+	const auto r = gfx.GetViewRegion();
+	gfx.PutPixel( p.x + 32,p.y + 32,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 33,p.y + 32,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 34,p.y + 32,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 35,p.y + 32,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 32,p.y + 33,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 33,p.y + 33,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 34,p.y + 33,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 35,p.y + 33,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 32,p.y + 34,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 33,p.y + 34,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 34,p.y + 34,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 35,p.y + 34,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 32,p.y + 35,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 33,p.y + 35,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 34,p.y + 35,{ WHITE,255 } );
+	//gfx.PutPixel( p.x + 35,p.y + 35,{ WHITE,255 } );
 	gfx.ProcessBloom();
-	pScreen->DrawPostBloom( gfx );
+	//pScreen->DrawPostBloom( gfx );
 }

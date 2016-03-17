@@ -111,7 +111,7 @@ private:
 		}
 		unsigned int GetLapCount() const
 		{
-			return lapTimes.size();
+			return unsigned int( lapTimes.size() );
 		}
 		virtual void OnNotify() override
 		{
@@ -226,7 +226,7 @@ private:
 
 	// structural
 	TexturedQuad shipQuad;
-	const Color shieldColor = GREEN;
+	const Color shieldColor = { GREEN,160u };
 
 	// linear
 	float thrustForce = 1200.0f;
