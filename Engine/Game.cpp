@@ -26,6 +26,7 @@ Game::Game( HWND hWnd,KeyboardServer& kServer,MouseServer& mServer )
 	gfx( hWnd ),
 	input( hWnd,mServer,kServer )
 {
+	srand(static_cast<unsigned int>(time(nullptr)));
 	pScreen = std::make_unique<GameScreen>( gfx,input,this );
 }
 
@@ -84,6 +85,23 @@ void Game::ComposeFrame()
 	//gfx.PutPixel( p.x + 33,p.y + 35,{ WHITE,255 } );
 	//gfx.PutPixel( p.x + 34,p.y + 35,{ WHITE,255 } );
 	//gfx.PutPixel( p.x + 35,p.y + 35,{ WHITE,255 } );
+
+	for (int y = 32; y < 64; ++y)
+	{
+		gfx.DrawLineClip(Vec2(p.x - 32.0f, p.y + y), Vec2(p.x + 64.0f, p.y + y), { 255, 0, 255 }, r);
+	}
+	/*for (int y = 0; y < gfx.GetHeight(); ++y)
+	{
+		for (int x = 0; x < gfx.GetWidth(); ++x)
+		{
+			unsigned char red = static_cast<unsigned char>(rand() % 255);
+			unsigned char green = static_cast<unsigned char>(rand() % 255);
+			unsigned char blue = static_cast<unsigned char>(rand() % 255);
+
+			gfx.PutPixel(x, y, { red, green, blue});
+		}
+	}*/
+
 	gfx.ProcessBloom();
 	//pScreen->DrawPostBloom( gfx );
 }
